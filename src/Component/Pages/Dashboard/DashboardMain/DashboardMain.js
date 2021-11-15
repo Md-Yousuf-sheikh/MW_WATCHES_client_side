@@ -16,8 +16,8 @@ const DashboardMain = () => {
     const { user, logOut, admin } = useAuth()
     return (
         <div>
-            <div className="bg-green-500 flex md:hidden">
-                <div className="px-2  justify-center text-white flex space-x-3 py-4 cursor-pointer text-sm">
+            <div className="bg-green-500  flex ">
+                <div className="px-2 flex  justify-center text-white  space-x-3 py-4 cursor-pointer text-sm">
                     <Link to="/" className="flex text-gray-600">
                         <svg className="h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -31,7 +31,7 @@ const DashboardMain = () => {
                         <h6 className="hidden md:flex">Dashboard</h6>
                     </Link>
                     {
-                        admin && <div>
+                        admin && <>
                             <Link to={`${url}/makeAdmin`} className="flex text-gray-600">
                                 <svg className="h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
@@ -50,7 +50,7 @@ const DashboardMain = () => {
                                 </svg>
                                 <h6 className="">Manage</h6>
                             </Link>
-                        </div>
+                        </>
                     }
                     <Link to={`${url}/payment`} className="flex text-gray-600">
                         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -73,12 +73,11 @@ const DashboardMain = () => {
                             </svg>
                         </Link>
                     }
-
                 </div>
             </div >
             <div className="flex min-h-screen bg-gray-200">
                 <div className="fixed   opacity-50 transition-opacity lg:hidden"></div>
-                <SideBar />
+
                 <Switch>
                     <Route exact path={`${path}`}>
                         <DashboardDoc />

@@ -5,7 +5,7 @@ import './Payment.css';
 const Payment = () => {
     return (
         <div class="mx-auto">
-            <dizv class="bg-blue-50">
+            <div class="bg-blue-50">
                 <div class="m-4">
                     <div class="credit-card w-full sm:w-auto shadow-lg mx-auto rounded-xl bg-white" x-data="creditCard">
                         <div class="flex flex-col  justify-center items-center">
@@ -100,7 +100,7 @@ const Payment = () => {
                         </div>
                     </div>
                 </div>
-            </dizv>
+            </div>
         </div >
     );
 };

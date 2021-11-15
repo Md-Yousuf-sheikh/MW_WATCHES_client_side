@@ -31,7 +31,7 @@ const AddPost = () => {
         document.getElementById("post-form").reset();
     }
     return (
-        <div className=" items-center bg-red-50 w-full  px-5 lg:px-20">
+        <div className=" items-center bg-red-50 w-screen min-h-screen  px-5 lg:px-20">
             <h1 className="text-3xl font-semiboeld  text-center">Add New Product</h1>
             {addPost && <div
                 class="bg-green-200 px-6 mb-4 py-2 rounded-md text-md flex items-center mx-auto w-3/4 xl:w-2/4"
