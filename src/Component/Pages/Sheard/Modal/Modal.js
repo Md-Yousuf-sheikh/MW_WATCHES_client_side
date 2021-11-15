@@ -3,7 +3,7 @@ import React from 'react';
 const Modal = ({ setConform, setOpenModal, pd, url }) => {
     const { _id } = pd;
     const handelDelete = e => {
-        fetch(`http://localhost:5000/${url}${_id}`, {
+        fetch(`https://limitless-thicket-29802.herokuapp.com/${url}${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json()

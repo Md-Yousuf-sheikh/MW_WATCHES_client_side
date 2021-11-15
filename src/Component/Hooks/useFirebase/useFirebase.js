@@ -125,7 +125,7 @@ const useFirebase = () => {
     // Save user data
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://limitless-thicket-29802.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -135,12 +135,12 @@ const useFirebase = () => {
             .then(res => res.json())
     }
     // admin check
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/users/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data.admin))
+    useEffect(() => {
+        fetch(`https://limitless-thicket-29802.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
 
-    // }, [user.email])
+    }, [user.email])
 
     return {
         user,

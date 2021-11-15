@@ -14,7 +14,7 @@ const ProductBay = () => {
     const [success, setSuccess] = useState(false)
     // products 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://limitless-thicket-29802.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setDetails(data))
     }, [])
@@ -29,7 +29,6 @@ const ProductBay = () => {
         const value = e.target.value;
         const newAddress = { ...address };
         newAddress[filed] = value;
-        console.log(newAddress);
         setAddress(newAddress);
     }
     // Post Document 
@@ -50,7 +49,7 @@ const ProductBay = () => {
     // handel order submit
     const handelOrderSubmit = e => {
         e.preventDefault()
-        fetch('http://localhost:5000/order', {
+        fetch('https://limitless-thicket-29802.herokuapp.com/order', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
