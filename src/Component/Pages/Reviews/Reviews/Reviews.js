@@ -51,8 +51,8 @@ const Reviews = () => {
     return (
         <div className="bg-gray-100  border-b-4 border-yellow-200">
             <div className="container w-11/12 mx-auto">
-                <h1 h1 className="text-center text-3xl mb-1 font-semibold" > Customer Reviews </h1 >
-                <div className=" w-2/12 lg:w-1/12 h-1 bg-green-400 mx-auto mb-4"></div>
+                <h1 h1 className="text-center text-4xl mb-1 font-semibold" > Reviews </h1 >
+                <div className="w-8 h-1 bg-green-400 mx-auto mb-4"></div>
                 <div className="pb-3">
                     <Slider {...settings} className="w-11/12" >
                         {
