@@ -14,14 +14,14 @@ const useFirebase = () => {
     const auth = getAuth();
     // Google sing In 
     const googleProvider = new GoogleAuthProvider();
-    const GoogleSinInUser = (location, history) => {
+    const GoogleSinInUser = (location, navigate) => {
         // set is loading
         setIsLoading(true)
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 // location state
                 const destination = location?.state?.from || '/';
-                history.replace(destination);
+                navigate(destination);
                 const user = result.user;
                 //  set user
                 setUser(user);
@@ -37,7 +37,7 @@ const useFirebase = () => {
     }
 
     //  Register with gmail and password
-    const registerWithEmail = (email, password, name, location, history) => {
+    const registerWithEmail = (email, password, name, location, navigate) => {
         // set is loading
         setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
@@ -56,7 +56,7 @@ const useFirebase = () => {
                 })
                 // location redirect 
                 const destination = location?.state?.from || '/';
-                history.replace(destination);
+                navigate(destination);
 
             })
             .catch((error) => {
@@ -66,7 +66,7 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false))
     }
     //  Login with gmail and password
-    const sinUpWithEmail = (email, password, location, history) => {
+    const sinUpWithEmail = (email, password, location, navigate) => {
         // set is loading 
         setIsLoading(true)
 
@@ -74,7 +74,7 @@ const useFirebase = () => {
             .then((result) => {
                 // location redirect 
                 const destination = location?.state?.from || '/';
-                history.replace(destination);
+                navigate(destination);
 
                 // set user 
                 setUser(result.user)

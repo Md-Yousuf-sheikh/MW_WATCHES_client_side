@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import Header from '../../Sheard/Header/Header/Header';
 
@@ -8,7 +8,7 @@ const Login = () => {
     const [inputData, setInputData] = useState({});
     const [fireError, setFireError] = useState(false);
     const location = useLocation();
-    const history = useHistory()
+    const navigate = useNavigate();
 
     const handelOnBlur = e => {
         const field = e.target.name;
@@ -19,7 +19,7 @@ const Login = () => {
     }
     const handelSinIn = e => {
         e.preventDefault();
-        sinUpWithEmail(inputData.email, inputData.password, location, history)
+        sinUpWithEmail(inputData.email, inputData.password, location, navigate)
         console.log(inputData.email, inputData.password);
         console.log(error);
         if (error) {
@@ -31,7 +31,7 @@ const Login = () => {
 
     }
     const googleSinIn = () => {
-        GoogleSinInUser(location, history)
+        GoogleSinInUser(location, navigate)
     }
     return (
         <>

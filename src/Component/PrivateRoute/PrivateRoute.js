@@ -1,10 +1,11 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router';
+import { Navigate, Redirect, Route, useLocation } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 
 
-const PrivetRoute = ({ children, ...rest }) => {
+const PrivetRoute = ({ children }) => {
     let { user, isLoading } = useAuth();
+    const location = useLocation()
     if (isLoading) {
         return <div style={{ marginTop: "20%" }} className="flex justify-center">
             <div class="relative">
@@ -13,23 +14,10 @@ const PrivetRoute = ({ children, ...rest }) => {
             </div>
         </div>
     }
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                user.email ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: { from: location }
-                        }}
-                    />
-                )
-            }
-        />
-    );
+    if (user?.email) {
+        return children;
+    }
+    return <Navigate to='/login' state={{ form: location }} />
 };
 
 export default PrivetRoute;

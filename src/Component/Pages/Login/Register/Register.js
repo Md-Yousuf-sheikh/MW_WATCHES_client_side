@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import Header from '../../Sheard/Header/Header/Header';
 
@@ -9,7 +9,7 @@ const Register = () => {
     const [passError, setPassError] = useState(false);
     const name = `${inputData.fastName} ${inputData.lastName}`;
     const location = useLocation()
-    const history = useHistory()
+    const navigate = useNavigate()
 
 
     const handelOnBlur = e => {
@@ -20,7 +20,7 @@ const Register = () => {
         setInputData(newInputData);
     }
     const googleSinIn = () => {
-        GoogleSinInUser(location, history)
+        GoogleSinInUser(location, navigate)
     }
 
 
@@ -32,7 +32,7 @@ const Register = () => {
         } else {
             setPassError(false)
         }
-        registerWithEmail(inputData.email, inputData.password, name, location, history);
+        registerWithEmail(inputData.email, inputData.password, name, location, navigate);
     }
     return (
         <>

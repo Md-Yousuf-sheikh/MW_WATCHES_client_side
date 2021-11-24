@@ -5,8 +5,8 @@ import Header from '../Sheard/Header/Header/Header';
 const Contact = () => {
     return (
         <>
-            <div>
-                <Header />
+            <Header />
+            <div className="p-5">
                 <form id="contact-me" class="w-full  mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
                     <h2 class="w-full text-3xl font-bold leading-tight my-5">Contact form</h2>
                     {/* <!-- name field --> */}

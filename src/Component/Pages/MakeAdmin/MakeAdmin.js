@@ -29,7 +29,7 @@ const MakeAdmin = () => {
         e.preventDefault();
     }
     return (
-        <div className="bg-gray-100  w-screen min-h-screen">
+        <div className="bg-gray-100 px-4 min-h-screen">
             <div>
                 <h1 className="text-3xl py-4 text-center font-semibold">Make new Admin</h1>
             </div>

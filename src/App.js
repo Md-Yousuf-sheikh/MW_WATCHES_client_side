@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from './Component/Pages/Home/Home/Home';
 import NotFound from './Component/Pages/NotFound/NotFound';
 import Contact from './Component/Pages/Contact/Contact';
@@ -11,42 +11,43 @@ import PrivetRoute from './Component/PrivateRoute/PrivateRoute';
 import Login from './Component/Pages/Login/Login/Login';
 import Register from './Component/Pages/Login/Register/Register';
 import ProductBay from './Component/Pages/Products/ProductBay/ProductBay';
+import MakeAdmin from './Component/Pages/MakeAdmin/MakeAdmin';
+import ManageProduct from './Component/Pages/ManageProduct/ManageProduct/ManageProduct/ManageProduct';
+import AddPost from './Component/Pages/AddPost/AddPost/AddPost';
+import Payment from './Component/Pages/Payment/Payment/Payment';
+import DashboardDoc from './Component/Pages/Dashboard/DashboardDoc/DashboardDoc';
+import AdminRoute from './Component/AdminRoute/AdminRoute';
 
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          <PrivetRoute exact path="/products/:id">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="products/:id" element={
+          <PrivetRoute>
             <ProductBay />
           </PrivetRoute>
-          <PrivetRoute path="/orders">
+        } />
+        <Route path="orders" element={
+          <PrivetRoute >
             <OrdersProduct />
           </PrivetRoute>
-          <PrivetRoute path="/dashboard">
-            <Dashboard />
-          </PrivetRoute>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
+        } />
+        <Route path="dashboard/*" element={<PrivetRoute><Dashboard /></PrivetRoute>} >
+          <Route path="makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>} />
+          <Route path="addPost" element={<AddPost />} />
+          <Route path="manageProduct" element={<ManageProduct />} />
+          <Route path="payment" element={<Payment />} />
+          <Route path="dashboardDoc" element={<DashboardDoc />} />
+          <Route path="" element={<DashboardDoc />} />
+        </Route>
+        <Route path="products" element={<Products />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
     </AuthProvider>
   );
 }

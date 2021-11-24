@@ -1,27 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
-
+import { FiWatch } from "react-icons/fi";
 const Navigation = ({ toggle }) => {
-    const { user, logOut, isLoading } = useAuth();
+    const { user, logOut } = useAuth();
     return (
         <>
-
-            {/* <!-- navbar --> */}
             <nav className="flex  bg-gray-900 text-white">
-                <div className="px-5 xl:px-12 py-2 flex w-full items-center">
-                    <Link to='/' className=" font-bold font-heading" href="/">
-                        <div className="text-3xl"><span className=" text-red-600">M</span>W</div>
-                    </Link>
-                    {/* Nav Links */}
+                <div className="px-5 xl:px-12 py-4 flex w-full items-center">
+                    <NavLink to='/' className=" font-bold font-heading flex" href="/">
+                        <div className="text-2xl flex"><FiWatch className="transform rotate-45 text-md" /><span className=" text-red-600">M</span><span className="transform -rotate-6 text-sm">W</span></div>
+                    </NavLink>
+
                     <ul className="hidden md:flex px-2 mx-auto font-semibold font-heading space-x-12">
-                        <li><Link to="/" className="text-blue-300 border-dotted border-yellow-400  ">Home</Link></li>
-                        <li><Link to="/products" className="text-blue-300 border-dotted border-yellow-400 ">Watches</Link></li>
-                        <li><Link to="/dashboard" className="text-blue-300 border-dotted border-yellow-400 ">Dashboard</Link></li>
-                        <li><Link to="/contact" className="text-blue-300 border-dotted border-yellow-400 ">Contact Us</Link></li>
-                        <li><Link to="/orders" className="text-blue-300 border-dotted border-yellow-400 ">Orders</Link></li>
+                        <li><NavLink to="/" className={(navIn) => navIn.isActive ? "text-white" : "text-blue-300 border-dotted border-yellow-400"}>Home</NavLink></li>
+                        <li><NavLink to="/products" className={(navIn) => navIn.isActive ? "text-white" : "text-blue-300 border-dotted border-yellow-400"}>Watches</NavLink></li>
+                        <li><NavLink to="/dashboard" className={(navIn) => navIn.isActive ? "text-white" : "text-blue-300 border-dotted border-yellow-400"}>Dashboard</NavLink></li>
+                        <li><NavLink to="/contact" className={(navIn) => navIn.isActive ? "text-white" : "text-blue-300 border-dotted border-yellow-400"}>Contact Us</NavLink></li>
+                        <li><NavLink to="/orders" className={(navIn) => navIn.isActive ? "text-white" : "text-blue-300 border-dotted border-yellow-400"}>Orders</NavLink></li>
                     </ul>
-                    {/* Header Icons */}
+
                     <div className="hidden xl:flex  space-x-5 items-center">
                         <a className="hover:text-gray-200" href="/">
                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,9 +41,7 @@ const Navigation = ({ toggle }) => {
                 <a className="hidden md:flex mr-6 items-center" href="/">
                     <span className="flex items-center hover:text-gray-200" >
                         {
-                            !user?.email && <Link to="/login" className=" px-2 my-1 rounded-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg></Link>
+                            !user?.email && <NavLink to="/login" className=" px-3 py-1 my-1 rounded-sm bg-red-500">LOGIN</NavLink>
                         }
                         {
                             user?.email && <button onClick={logOut} className="bg-yellow-500 px-2 my-1 rounded-sm">

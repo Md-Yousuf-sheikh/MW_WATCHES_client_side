@@ -13,19 +13,19 @@ const Dropdown = ({ isOpen, toggle }) => {
             }
             onClick={toggle}
         >
-            <NavLink className="p-4 text-blue-400 hover:text-green-200" to="/">
+            <NavLink className={(navIn) => navIn.isActive ? "text-white" : "p-4 text-blue-400 hover:text-green-200"} to="/">
                 Home
             </NavLink>
-            <NavLink className="p-4 text-blue-400 hover:text-green-200" to="/products">
+            <NavLink className={(navIn) => navIn.isActive ? "text-white" : "p-4 text-blue-400 hover:text-green-200"} to="/products">
                 Watches
             </NavLink>
-            <NavLink className="p-4 text-blue-400 hover:text-green-200" to="/dashboard">
+            <NavLink className={(navIn) => navIn.isActive ? "text-white" : "p-4 text-blue-400 hover:text-green-200"} to="/dashboard">
                 Dashboard
             </NavLink>
-            <NavLink className="p-4 text-blue-400 hover:text-green-200" to="/orders">
+            <NavLink className={(navIn) => navIn.isActive ? "text-white" : "p-4 text-blue-400 hover:text-green-200"} to="/orders">
                 Orders
             </NavLink>
-            <NavLink className="p-4 text-blue-400 hover:text-green-200" to="/contact">
+            <NavLink className={(navIn) => navIn.isActive ? "text-white" : "p-4 text-blue-400 hover:text-green-200"} to="/contact">
                 Contact
             </NavLink>
             <div className="mx-auto">
